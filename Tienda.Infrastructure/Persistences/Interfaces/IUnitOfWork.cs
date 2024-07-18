@@ -7,6 +7,7 @@
         ICategoryRepository Category { get; }
         IUserRepository User { get; }
         IProductRepository Product { get; }
+        ICartRepository Cart { get; }
         void SaveChanges();
         Task SaveChangesAsync();
     }

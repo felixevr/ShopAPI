@@ -181,14 +181,5 @@ namespace Tienda.Application.Services
             }
             return response;
         }
-        //public async Task<Category> GetByIdWithProductsAsync(int id)
-        //{
-        //    var category = await _unitOfWork.Category
-        //        .AsNoTracking()
-        //        .Include(c => c.Products)
-        //        .FirstOrDefaultAsync(c => c.Id == id);
-
-        //    return category!;
-        //}
     }
 }

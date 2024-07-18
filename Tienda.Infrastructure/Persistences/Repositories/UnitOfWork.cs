@@ -9,6 +9,9 @@ namespace Tienda.Infrastructure.Persistences.Repositories
         public ICategoryRepository Category { get; private set; }
         public IUserRepository User { get; private set; }
         public IProductRepository Product { get; private set; }
+        public ICartRepository Cart { get; private set; }
+        public ICartItemRepository CartItem { get; private set; }
+
 
 
         public UnitOfWork(TiendaDbContext context)
@@ -17,6 +20,10 @@ namespace Tienda.Infrastructure.Persistences.Repositories
             Category = new CategoryRepository(_context);
             User = new UserRepository(_context);
             Product = new ProductRepository(_context);
+            Cart = new CartRepository(_context);
+            CartItem = new CartItemRepository(_context);
+
+
 
         }
         public void Dispose()

@@ -8,6 +8,6 @@
         public DateTime AuditCreateDate { get; set; }
         public int State { get; set; }
         public string? StateCategory { get; set; }
-        public List<ProductResponseDto> Products { get; set; } = new List<ProductResponseDto>(); // agregado para lograr traer los productos
+        public List<ProductResponseDto> Products { get; set; } = []; // agregado para lograr traer los productos
     }
 }

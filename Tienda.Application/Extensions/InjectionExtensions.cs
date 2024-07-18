@@ -17,6 +17,10 @@ namespace Tienda.Application.Extensions
             services.AddScoped<ICategoryApplication, CategoryApplication>();
             services.AddScoped<IUserApplication, UserApplication>();
             services.AddScoped<IProductApplication, ProductApplication>();
+            services.AddScoped<ICartApplication, CartApplication>();
+            //services.AddScoped<ICartItemApplication, CartItemApplication>();
+
+
 
 
             return services;

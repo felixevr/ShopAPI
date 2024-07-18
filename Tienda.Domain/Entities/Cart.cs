@@ -2,7 +2,6 @@
 {
     public partial class Cart : BaseEntity
     {
-        public int CartID { get; set; }
         public int? UserID { get; set; }
 
         public User? User { get; set; }

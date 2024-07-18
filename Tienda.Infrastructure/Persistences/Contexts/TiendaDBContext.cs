@@ -37,21 +37,22 @@ public partial class TiendaDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Carts__51BCD797F3C60ABF");
 
-            entity.ToTable("Cart");
-
             entity.Property(e => e.Id).HasColumnName("CartID");
             entity.Property(e => e.UserID).HasColumnName("UserID");
 
             entity.HasOne(d => d.User).WithMany(p => p.Carts) // Me queda la espina aquí de no poder hacer una relación 1 a 1
                 .HasForeignKey(d => d.UserID)
                 .HasConstraintName("FK__Carts__UserID__47DBAE45");
+
+            // Agregado para hacer si desaparece el error: (sin éxito)
+            // SqlClient.SqlException (0x80131904): Invalid column name 'CartItemID1'. Invalid column name 'CartID1'.
+            entity.HasMany(d => d.CartItems).WithOne(c => c.Cart)
+                .HasForeignKey(c => c.CartID);
         });
 
         modelBuilder.Entity<CartItem>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__CartItems__51BCD797F3C60ABF");
-
-            entity.ToTable("CartItem");
 
             entity.Property(e => e.Id).HasColumnName("CartItemID");
             entity.Property(e => e.CartID).HasColumnName("CartID");
@@ -164,12 +165,12 @@ public partial class TiendaDbContext : DbContext
 
             // RELACIÓN A: MANY INVOICES
             entity.HasMany(d => d.InvoiceHeaders).WithOne(p => p.User) // En Invoices también está configurada esta relación 
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Users__InvoiceID__4316F928");
+                .HasForeignKey(d => d.UserId)/*
+                .HasConstraintName("FK__Users__InvoiceID__4316F928")*/;
             // RELACIÓN A: ONE? CART
             entity.HasMany(d => d.Carts).WithOne(p => p.User) // En Invoices también está configurada esta relación 
-                .HasForeignKey(d => d.CartID)
-                .HasConstraintName("FK__Users__CartID__4316F928");
+                .HasForeignKey(d => d.UserID)/*
+                .HasConstraintName("FK__Users__CartID__4316F928")*/;
         });
 
         OnModelCreatingPartial(modelBuilder);
