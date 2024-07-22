@@ -20,10 +20,6 @@ namespace Tienda.Application.Mappers
                 .ReverseMap();
 
             CreateMap<CartRequestDto, Cart>();
-
-            //CreateMap<CartSelectResponseDto, Cart>()
-            //    .ForMember(x => x.Id, x => x.MapFrom(y => y.CartId))
-            //    .ReverseMap();
         }
     }
 }

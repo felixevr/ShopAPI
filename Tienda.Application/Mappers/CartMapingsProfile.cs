@@ -19,11 +19,12 @@ namespace Tienda.Application.Mappers
             CreateMap<BaseEntityResponse<Cart>, BaseEntityResponse<CartResponseDto>>()
                 .ReverseMap();
 
+            CreateMap<BaseEntityResponse<Cart>, BaseEntityResponse<CartSelectResponseDto>>()
+                .ReverseMap();
+
             CreateMap<CartRequestDto, Cart>();
 
-            //CreateMap<CartSelectResponseDto, Cart>()
-            //    .ForMember(x => x.Id, x => x.MapFrom(y => y.CartId))
-            //    .ReverseMap();
+
         }
     }
 }

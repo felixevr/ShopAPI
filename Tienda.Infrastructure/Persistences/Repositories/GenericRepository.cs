@@ -71,11 +71,11 @@ namespace Tienda.Infrastructure.Persistences.Repositories
             return recordsAffected > 0;
         }
 
-        public IQueryable<T> GetEntityQuery(Expression<Func<T, bool>>? filter = null)
+        public IQueryable<T> GetEntityQuery(Expression<Func<T, bool>>? filter = null) 
         {
             IQueryable<T> query = _entity; // Conversión implícita de DBSet a IQueryable, ya que DBSet implementa IQueryable
 
-            if (filter != null) query = query.Where(filter); // Trae los 7 registros completos
+            if (filter != null) query = query.Where(filter); 
 
             return query;
         }

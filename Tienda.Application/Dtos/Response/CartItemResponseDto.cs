@@ -1,6 +1,4 @@
-﻿using Tienda.Domain.Entities;
-
-namespace Tienda.Application.Dtos.Response
+﻿namespace Tienda.Application.Dtos.Response
 {
     public class CartItemResponseDto
     {
@@ -13,6 +11,6 @@ namespace Tienda.Application.Dtos.Response
         public DateTime AuditCreateDate { get; set; }
 
         //public CartResponseDto? Cart { get; set; }
-        //public ProductResponseDto? Product { get; set; }
+        public ProductResponseDto? Product { get; set; }
     }
 }

@@ -12,9 +12,9 @@ namespace Tienda.Application.Mappers
         public CategoryMapingsProfile()
         {
             CreateMap<Category, CategoryResponseDto>()
-                .ForMember(x => x.CategoryId, x => x.MapFrom(y => y.Id))
-                .ForMember(x => x.StateCategory, x => x.MapFrom(y => y.State.Equals((int)StateTypes.Active) ? "Activo" : "Inactivo"))
-                .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products))
+                .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(y => y.Id))
+                .ForMember(dest => dest.StateCategory, opt => opt.MapFrom(src => src.State.Equals((int)StateTypes.Active) ? "Activo" : "Inactivo"))
+               // .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products)) // No era necesaria para el mapeo
                 .ReverseMap();
             // Personal Notes. Learning purpose only. Not intended for documentation.
             // x in the first parameter is destination member class (CategoryResponseDto)
@@ -26,12 +26,12 @@ namespace Tienda.Application.Mappers
 
             CreateMap<CategoryRequestDto, Category>();
 
-            CreateMap<CategorySelectResponseDto, Category>()
-                .ForMember(x => x.Id, x => x.MapFrom(y => y.CategoryId)) // Inverted Map
+            CreateMap<CategorySelectResponseDto, Category>() // No es neceario
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.CategoryId)) // Inverted Map
                 .ReverseMap();
-            
-            CreateMap<Product, ProductResponseDto>()
-                .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Id));
+
+            //CreateMap<Product, ProductResponseDto>() // No era necesaria para el mapeo
+            //    .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Id));
         }
     }
 }
